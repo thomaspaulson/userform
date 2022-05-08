@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\UserForm;
+use App\Models\FormField;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -39,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::model('form', UserForm::class);
+        Route::model('field', FormField::class);
 
     }
 

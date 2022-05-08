@@ -78,9 +78,69 @@
     </main>
 
 
-
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <script>
+    $(document).ready(function () {
+      /**
+      * Add button click handler
+      */
+        function onAdd() {
+          var $ul, li, $li, $label, $div, value, $btn;
+          value = $('.js-new-item').val();
+          //validate against empty values
+          if (value === '') {
+            return;
+          }
+
+          $ul = $('ul#options');
+          $li = $('<li>').appendTo($ul);
+          $div = $('<div>')
+            //.addClass('checkbox')
+            .appendTo($li);
+
+          $label = $('<label>').appendTo($div);
+          $('<input>')
+            .attr('type', 'hidden')
+            .attr('value', value)
+            .attr('name', 'option[]')
+            //.click(toggleRemoved)
+            .appendTo($label);
+
+          $label
+            .append(value);
+
+          //$btn = $('<btn>').appendTo($div);
+
+          // $btn.addClass('btn btn-sm')
+          //   .html;
+          $('<button>')
+            .attr('type', 'button')
+            .addClass('js-item')
+            .html('del')
+            .click(toggleRemoved)
+            .appendTo($div);
+
+
+          $('.js-new-item').val('');
+        }
+        /**
+        * Checkbox click handler -
+        * toggles class removed on li parent element
+        * @param ev
+        */
+        function toggleRemoved(ev) {
+          var $el;
+          $el = $(ev.currentTarget);
+          //$el.closest('li').toggleClass('removed');
+          $el.closest('li').remove();
+        }
+
+        $('.js-add').click(onAdd);
+        $('.js-item').click(toggleRemoved);
+      });
+      </script>
   </body>
 </html>

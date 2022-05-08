@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserFormController;
+use App\Http\Controllers\FormFieldController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/admin', [DashboardController::class, 'index']);
 
 Route::name('admin.')->prefix('admin')->group(function () {
-
     Route::resource('forms', UserFormController::class);
+    Route::resource('fields', FormFieldController::class);
 });

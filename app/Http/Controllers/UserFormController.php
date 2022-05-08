@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FormField;
 use App\Models\UserForm;
 use Illuminate\Http\Request;
 
@@ -52,8 +53,10 @@ class UserFormController extends Controller
 
     public function show(UserForm $form)
     {
+        $fields = FormField::where('userform_id', $form->id)->get();
         return view('admin.forms.show')->with([
-            'form' => $form
+            'form' => $form,
+            'fields' => $fields,
         ]);
     }
 

@@ -15,7 +15,9 @@
     @foreach ($forms as $form)
       <tr>
         <td>{{ $form->id }}</td>
-        <td>{{ $form->title }}</td>
+        <td>
+          <a href="{{ route('admin.forms.show', $form->id) }}" role="button">{{ $form->title }}</a>
+        </td>
         <td>
         <a class="btn btn-primary btn-sm" href="{{ route('admin.forms.edit', $form->id) }}" role="button">Edit</a>
           |
