@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserForm extends Model
+class SubmittedFormField extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class UserForm extends Model
      *
      * @var string
      */
-    protected $table = 'userforms';
+    protected $table = 'submitted_form_fields';
 
     /**
      * The attributes that are mass assignable.
@@ -22,19 +22,11 @@ class UserForm extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'content'
+        'name',
+        'value',
+        'submitted_form_id'
     ];
 
-    public function fields()
-    {
-        return $this->hasMany(FormField::class, 'userform_id');
-    }
-
-    public function submission()
-    {
-        return $this->hasMany(SubmittedForm::class, 'userform_id');
-    }
-
+    public $timestamps = false;
 
 }

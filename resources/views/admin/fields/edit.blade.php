@@ -39,7 +39,7 @@
           <div class="input-group">
             <input placeholder="value"  type="text" class="js-new-item form-control">
             <span class="input-group-btn">
-            <button @click="addItem" class="js-add btn btn-default" type="button">Add!</button>
+            <button @click="addItem" class="js-add btn btn-default btn-primary btn-sm" type="button">Add!</button>
             </span>
           </div>
           <button type="submit" class="mt-2 btn btn-block btn-danger">Edit </button>

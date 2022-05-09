@@ -30,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('formfeild_options');
-        //Schema::dropIfExists('formfeilds');
         Schema::dropIfExists('userforms');
     }
 };

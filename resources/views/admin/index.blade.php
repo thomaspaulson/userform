@@ -32,5 +32,24 @@
       </tr>
     @endforeach
     </table>
+
+    <h1>Form submission</h1>
+
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Form</th>
+        <th></th>
+      </tr>
+    @foreach ($submissions as $submission)
+      <tr>
+        <td>{{ $submission->id }}</td>
+        <td>
+          <a href="{{ route('admin.submissions.show', $submission->id) }}" role="button">{{ $submission->userform->title }}</a>
+        </td>
+      </tr>
+    @endforeach
+    </table>
+
   </div>
 @endsection

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -13,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('form_submitted', function (Blueprint $table) {
+        Schema::create('submitted_form', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('userform_id');
             $table->timestamps();
@@ -21,9 +22,14 @@ return new class extends Migration
             $table->foreign('userform_id')->references('id')->on('userforms');
         });
 
-        Schema::create('submitted_formfeilds', function (Blueprint $table) {
+        Schema::create('submitted_form_fields', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('value');
+            $table->unsignedBigInteger('submitted_form_id');
+
+            $table->foreign('submitted_form_id')->references('id')->on('submitted_form');
+
         });
 
     }
@@ -35,7 +41,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('submitted_formfeilds');
-        Schema::dropIfExists('form_submitted');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('submitted_form_fields');
+        Schema::dropIfExists('submitted_form');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 };

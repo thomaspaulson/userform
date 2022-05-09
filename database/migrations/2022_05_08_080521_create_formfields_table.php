@@ -46,6 +46,6 @@ return new class extends Migration
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('formfield_options');
         Schema::dropIfExists('formfields');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 };
